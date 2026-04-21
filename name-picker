@@ -1,0 +1,46 @@
+| C組 | 組員 | 網址 |
+|----:|------|------|
+|組長|蔣宥辰|[組長 github](https://github.com/AllenChiang114514)|
+|組員|毛霆漢|[組員 github](https://github.com/maoomaoooooo/mao)|
+|組員|李俊緯|[組員 github](https://github.com/d1134111001-collab/111001)|
+|組員|王廷瑋|[組員 github](https://github.com/d1134112007)|
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>抽名字工具</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            margin-top: 100px;
+        }
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+        #result {
+            margin-top: 30px;
+            font-size: 30px;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎯 隨機抽名字</h1>
+    <button onclick="drawName()">抽一個人</button>
+
+    <div id="result"></div>
+
+    <script>
+        const names = ["蔣宥辰", "毛霆漢", "李俊緯", "王廷瑋"];
+
+        function drawName() {
+            const randomIndex = Math.floor(Math.random() * names.length);
+            document.getElementById("result").innerText = names[randomIndex];
+        }
+    </script>
+
+</body>
+</html>
