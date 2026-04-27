@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>抽獎系統</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background: #f5f5f5;
+        margin-top: 100px;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    #result {
+        font-size: 50px;
+        margin: 40px;
+        color: #ff5722;
+    }
+    button {
+        padding: 15px 30px;
+        font-size: 20px;
+        margin: 10px;
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        background-color: #4CAF50;
+        color: white;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<h1>🎉 抽獎系統 🎉</h1>
+<div id="result">點擊開始抽獎</div>
+
+<button onclick="startLottery()">開始抽獎</button>
+<button onclick="resetLottery()">重置名單</button>
+
+<script>
+let originalList = ["蔣宥辰", "毛霆漢", "李俊緯", "王廷瑋"];
+let nameList = [...originalList];
+let interval;
+
+function startLottery() {
+    if (nameList.length === 0) {
+        document.getElementById("result").innerText = "全部抽完了！";
+        return;
+    }
+
+    let counter = 0;
+
+    interval = setInterval(() => {
+        let randomIndex = Math.floor(Math.random() * nameList.length);
+        document.getElementById("result").innerText = nameList[randomIndex];
+        counter++;
+
+        // 跑動畫大約1.5秒
+        if (counter > 15) {
+            clearInterval(interval);
+
+            let finalIndex = Math.floor(Math.random() * nameList.length);
+            let winner = nameList[finalIndex];
+
+            document.getElementById("result").innerText = "🎊 " + winner + " 🎊";
+
+            // 移除已中獎者
+            nameList.splice(finalIndex, 1);
+        }
+    }, 100);
+}
+
+function resetLottery() {
+    nameList = [...originalList];
+    document.getElementById("result").innerText = "名單已重置";
+}
+</script>
+
+</body>
+</html>
